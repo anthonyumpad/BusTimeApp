@@ -90,7 +90,7 @@
 			foreach($busStops as $key => $obj)
 			{
 
-				$busStops[$key]['distFromLocation'] = $this->vincentyGreatCircleDistance($_GET['lat'],$_GET['lng'], $obj['lat'],$obj['long']);
+				$busStops[$key]['distFromLocation'] = round($this->vincentyGreatCircleDistance($_GET['lat'],$_GET['lng'], $obj['lat'],$obj['long']));
 			}
 			return $busStops;
 		}

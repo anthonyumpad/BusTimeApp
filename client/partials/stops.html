@@ -16,7 +16,7 @@
         <li ng-repeat="stop in stops | filter:query | orderBy:['distFromLocation','name']" class="topcoat-list__item">
             <a ng-click="go('/stops/' + stop._id)">
                 <p>{{stop.name}}</p>
-                <p>{{stop._id}}</p>
+                <p>{{stop._id}}  <span ng-if="stop.distFromLocation">[{{stop.distFromLocation}}m]</p>
 		 <span class="chevron"></span>
             </a>
         </li>

@@ -24,7 +24,7 @@ switch ($method) {
 		$locationBusStops = null;
 
 		//check if geolocation is given
-		if(isset($_GET['lat']) && isset($_GET['lng']) && !isset($_GET['_id']))
+		if(isset($_GET['lat']) && isset($_GET['lng']))
 		{
 			$busStop= new BusStop($mdb);
 			//get min max lat and long
@@ -58,7 +58,7 @@ switch ($method) {
 				$findOne = true;
 			}
 
-			if(!is_null($locationBusStops))
+			if(!is_null($locationBusStops) && !isset($_GET['_id']))
                         {
 		 		//construct criteria to query for Services with the Bus Stops near the area
 				$tmpCriteria = array();
@@ -69,6 +69,21 @@ switch ($method) {
 				$criteria = array('$or' => $tmpCriteria);
                         }
 			$data = $busService->query($criteria,$findOne);
+			//check again to transform data to display only the bus stop near to the user
+			if(!is_null($locationBusStops) && isset($_GET['_id']))
+			{
+				foreach($data['stops'] as $stopId => $arrTime)
+				{
+					if(!isset($locationBusStops[$stopId]))
+					{
+						unset($data['stops'][$stopId]);
+					}
+					else
+					{
+						$data['stops'][$stopId]['distFromLocation'] = $locationBusStops[$stopId]['distFromLocation'];
+					}
+				}
+			}
 		}	
 
                 //Query for Bus Stops

@@ -74,7 +74,14 @@ angular.module('busTimeApp.controllers', [])
 	}
     }])
     .controller('ServiceStopsCtrl', ['$scope', '$routeParams','ServiceStops', function ($scope,$routeParams,ServiceStops) {
-	$scope.service = ServiceStops.query({_id:$routeParams.serviceId});
+        if($scope.lat != null && $scope.lng != null)
+        {
+		$scope.service = ServiceStops.query({_id:$routeParams.serviceId,lat:$scope.lat,lng:$scope.lng});
+        }
+        else
+        {
+		$scope.service = ServiceStops.query({_id:$routeParams.serviceId});
+        }
     }])
     .controller('StopServicesCtrl', ['$scope', '$routeParams','StopServices', function ($scope,$routeParams,StopServices) {
 	$scope.stop = StopServices.query({_id:$routeParams.stopId});

@@ -4,7 +4,7 @@ BusTimeApp
 This is a simple Angular JS + Topcoat UI application tested using Android emulator only
 Working code at https://ec2-54-69-212-116.us-west-2.compute.amazonaws.com/client/#/main
 
-The Backend uses PHP + Apache using MongoDB.
+The Backend uses PHP + Apache with MongoDB as the datastore.
 
 This application gets your current location and finds the nearest bus service and
 bus stops. This will show the bus service arrival time in minutes.

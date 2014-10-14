@@ -1,0 +1,23 @@
+<div class="topcoat-navigation-bar">
+    <div class="topcoat-navigation-bar__item left quarter">
+        <a class="topcoat-icon-button--quiet back-button" href="" ng-click="back()">
+            <span class="topcoat-icon topcoat-icon--back"></span>
+        </a>
+    </div>
+    <div class="topcoat-navigation-bar__item center half">
+        <h1 class="topcoat-navigation-bar__title">Bus Services</h1>
+    </div>
+</div>
+<div class="search-bar">
+    <input ng-model="query" type="text" placeholder="search" class="topcoat-search-input search-key">
+</div>
+<div class="topcoat-list__container scroller" style="top:138px;">
+    <ul class="topcoat-list list">
+        <li ng-repeat="service in services | filter:{_id:query} | orderBy:'_id'" class="topcoat-list__item">
+            <a ng-click="go('/services/' + service._id)">
+                <p>{{service._id}}</p>
+				 <span class="chevron"></span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -44,7 +44,7 @@
 						foreach($tdata['stops'] as $stopId => $arrTime)
 						{
 							$busStopName = $bStops[$stopId]['name'];
-							$tdata['stops'][$stopId] = array("name" => $busStopName,"arrTime" => $arrTime);	
+							$tdata['stops'][$stopId] = array("name" => $busStopName,"arrTime" => $arrTime,"_id" => $stopId);	
 						}
 					}
                                         $result = $tdata;

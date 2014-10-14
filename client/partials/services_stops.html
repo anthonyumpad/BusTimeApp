@@ -16,6 +16,7 @@
         <li ng-repeat="stop in service[0].stops | filter:query | orderBy:'name'" class="topcoat-list__item">
             <a ng-click="go('/services/' + service[0]._id)">
                 <p>{{stop.name}}</p>
+                <p>{{stop._id}}</p>
 				 <!--span class="chevron"></span--><span class="count">{{stop.arrTime}} mins.</span>
             </a>
         </li>
